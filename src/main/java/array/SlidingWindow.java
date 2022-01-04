@@ -110,7 +110,7 @@ public class SlidingWindow {
      * 这种题⽬，是明显的滑动窗⼝算法，相当给你⼀个 S 和⼀个 T，请问你 S 中是否存在⼀个⼦串，包含 T 中所 有字符且不包含其他字符？
      */
     private static void permutationInString(){
-        String s="eidboaoo";
+        String s="eidboaboo";
         String t="ab";
         HashMap<Character,Integer> need=new HashMap<>();
         HashMap<Character,Integer> window=new HashMap<>();
@@ -134,6 +134,32 @@ public class SlidingWindow {
                     amount ++;
                 }
             }
+//            一直在划
+            /**
+             * 优化
+             * 1、本题移动 left 缩⼩窗⼝的时机是窗⼝⼤⼩⼤于 t.size() 时，应为排列嘛，显然⻓度应该是⼀样的。
+             * 2、当发现 valid == need.size() 时，就说明窗⼝中就是⼀个合法的排列，所以⽴即返回 true。 ⾄于如何处理窗⼝的扩⼤和缩⼩，和最⼩覆盖⼦串完全相同。
+             */
+//            因为是 2个空格的滑动窗口，所以窗口大于2，就要右移。长度固定，所以不需要左移
+            while (right-left>=t.length()){
+                if (amount==t.length()){
+                    System.out.println("有匹配的");
+                    System.out.println(s.substring(left,right));
+                }else {
+                    System.out.println("no 有匹配的");
+                }
+                char leftChar=sourceArray[left];
+                left++;
+                if (need.containsKey(leftChar)){
+                    if (window.get(leftChar).equals(need.get(leftChar))) {
+                        amount --;
+                    }
+                    window.put(leftChar,window.getOrDefault(leftChar,0)-1);
+                }
+
+            }
+
+
             /**
              * 参考上题的逻辑代码，但是我们需要更精一步
              */
@@ -165,12 +191,7 @@ public class SlidingWindow {
 //                }
 //
 //            }
-            /**
-             * 优化
-             * 1、本题移动 left 缩⼩窗⼝的时机是窗⼝⼤⼩⼤于 t.size() 时，应为排列嘛，显然⻓度应该是⼀样的。
-             * 2、当发现 valid == need.size() 时，就说明窗⼝中就是⼀个合法的排列，所以⽴即返回 true。 ⾄于如何处理窗⼝的扩⼤和缩⼩，和最⼩覆盖⼦串完全相同。
-             */
-//            因为是 2个空格的滑动窗口，所以窗口大于2，就要右移。长度固定，所以不需要左移
+
 
 
 
