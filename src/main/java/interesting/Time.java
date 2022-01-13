@@ -15,7 +15,6 @@ public class Time {
             Long newC=System.currentTimeMillis();
             System.out.println((newC-cur)/1000);
         }
-
     }
     public static long fibonacci(long number) {
         if ((number == 0) || (number == 1))
