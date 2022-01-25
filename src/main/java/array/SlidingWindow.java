@@ -32,6 +32,8 @@ void slidingWindow(string s, string t) {
         }
         }
  因为滑动窗⼝很多时候都是在处理字符串相关的问题，
+
+        1 2 3 4 5 6 7 8
  */
 public class SlidingWindow {
 
@@ -86,10 +88,10 @@ public class SlidingWindow {
      * 如果 S 中存在这样的子串，我们保证它是唯一的答案。
      */
     private static void minimumWindowSubstring(){
-       String s="ADOBECODEBANC";
-       String t="ABC";
+       String s="ADOBAECODEBANC";
+       String t="ABBC";
        HashMap<Character,Integer> need=new HashMap<>();
-        HashMap<Character,Integer> window=new HashMap<>();
+       HashMap<Character,Integer> window=new HashMap<>();
 
         for (char c : t.toCharArray()) {
             need.put(c,1);

@@ -19,20 +19,23 @@ public class LeapArray {
 
     public static void main(String[] args) throws InterruptedException {
         while (true) {
-            leapWindow();
+            int test=leapWindow();
             Thread.sleep(200);
+//            if (test<2){
+//                Thread.sleep(100);
+//            }
         }
     }
 
 
-    private static void leapWindow(){
-
+    private static int leapWindow(){
+        int test=0;
         long curTime=System.currentTimeMillis();
         long startTime=curTime-curTime%sizeOfWindow;
         int indexOfWindow=(int) ((curTime/sizeOfWindow)%amountOfWindow);
 
 //        根据索引idx，在采样窗口数组中取得一个时间窗口old
-        System.out.println(indexOfWindow);
+        System.out.println(indexOfWindow+"this time "+curTime);
         WindowWrap oldWindowWrap=sourceArray[indexOfWindow];
         //如果old为空，说明该时间窗口还没有创建、则创建一个时间窗口，并将它插入到array的第idx个位置
         if (oldWindowWrap==null){
@@ -42,6 +45,7 @@ public class LeapArray {
              * 200     400     600     800     1000    1200  timestamp
              *                             ^
              *                          time=888
+             *   23432432
              *            bucket is empty, so create new and update
              *
              * If the old bucket is absent, then we create a new bucket at {@code windowStart},
@@ -52,6 +56,7 @@ public class LeapArray {
             System.out.println("创建一个时间窗口，开始时间"+startTime+",数据为请求数量，此时请求量为 0");
         }else {
             oldWindowWrap.dataAmount=oldWindowWrap.dataAmount+1;
+            test=oldWindowWrap.dataAmount;
             //如果当前窗口的开始时间time与old的开始时间相等，那么说明old就是当前时间窗口，直接返回old
             if (oldWindowWrap.startTime == startTime){
                 /*
@@ -92,5 +97,6 @@ public class LeapArray {
                 throw new RuntimeException("如果不手动修改操作系统的时间，这个情况永远不会出现");
             }
         }
+        return test;
     }
 }
