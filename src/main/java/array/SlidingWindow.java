@@ -32,6 +32,8 @@ void slidingWindow(string s, string t) {
         }
         }
  因为滑动窗⼝很多时候都是在处理字符串相关的问题，
+
+        1 2 3 4 5 6 7 8
  */
 public class SlidingWindow {
 
@@ -40,9 +42,40 @@ public class SlidingWindow {
 //        minimumWindowSubstring();
 //        permutationInString();
 //        findAllAnagramsInString();
-        longestSubstringWithoutRepeatingCharacters();
+//        longestSubstringWithoutRepeatingCharacters();
+
 
     }
+    private void formula (){
+        String source="source";
+        String compare="compare";
+        HashMap<Character,Integer> need=new HashMap<>();
+        HashMap<Character,Integer> window=new HashMap<>();
+//        构建需求map
+        for (char c : compare.toCharArray()) {
+            need.put(c,1);
+        }
+
+        char[] sourceArray=source.toCharArray();
+        int left=0;
+        int right=0;
+        int amount=0;
+        while (right<sourceArray.length){
+//            取出数组内容
+            char sChar=sourceArray[right];
+//            右移
+            right++;
+//           `````  进⾏窗⼝内数据的⼀系列更新
+
+//            判断是否需要左指针右移
+            while (amount==compare.length()){
+//和 右指针是对称操作
+                char leftChar=sourceArray[left];
+                left++;
+            }
+        }
+    }
+
 
     /**
      * 最⼩覆盖⼦串
@@ -55,10 +88,10 @@ public class SlidingWindow {
      * 如果 S 中存在这样的子串，我们保证它是唯一的答案。
      */
     private static void minimumWindowSubstring(){
-       String s="ADOBECODEBANC";
-       String t="ABC";
+       String s="ADOBAECODEBANC";
+       String t="ABBC";
        HashMap<Character,Integer> need=new HashMap<>();
-        HashMap<Character,Integer> window=new HashMap<>();
+       HashMap<Character,Integer> window=new HashMap<>();
 
         for (char c : t.toCharArray()) {
             need.put(c,1);
