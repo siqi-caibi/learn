@@ -1,7 +1,8 @@
 package array;
 
 /**
- * 最常⽤的⼆分查找场景：寻找⼀个数、寻找左侧边界、寻找右侧边界。
+ * 最常⽤的⼆分查找场景：寻找⼀个数、寻找左侧边界、寻找右侧边界。按照给定的顺序装运,单调递增或递减
+ *
  *
  // 函数 f 是关于⾃变量 x 的单调函数
  int f(int x) {
@@ -38,7 +39,8 @@ package array;
  */
 public class BinarySearch {
     public static void main(String[] args) {
-
+//        banana();
+        shipWithinDays();
     }
 
     /**
@@ -67,10 +69,129 @@ public class BinarySearch {
      * piles.length <= H <= 10^9
      * 1 <= piles[i] <= 10^9
      */
-    private void banana(){
+    private static void banana(){
+        int[] plies={30,11,23,4,20};
+        int h=6;
+        /**
+         * 珂珂吃香蕉的速度最小是多少？多大是多少？
+         *
+         * 显然，最小速度应该是 1，最大速度是piles数组中元素的最大值，因为每小时最多吃一堆香蕉，胃口再大也白搭嘛。
+         *
+         * 这里可以有两种选择，要么你用一个 for 循环去遍历piles数组，计算最大值，要么你看题目给的约束，piles中的元素取值范围是多少，然后给right初始化一个取值范围之外的值。
+         *
+         * 我选择第二种，题目说了1 <= piles[i] <= 10^9，那么我就可以确定二分搜索的区间边界：
+         */
+        int left=1;
+        int right=30;
 
+        while (left<right){
+            int mid=left+(right -left)/2;
+            if (bananaFx(mid,plies)==h){
+                right=mid;
+            }else if(bananaFx(mid,plies)<h){
+                right=mid;
+            }else {
+                left=mid+1;
+            }
+        }
+        System.out.println(left);
     }
-    private void bananaFx(){
+    private static int  bananaFx(int x,int[] plies){
+        int y=0;
+        for (int ply : plies) {
+            float hours=(float) ply/(float) x;
+            y=y+(int) Math.ceil(hours);
+        }
+       return y;
+    }
+    /**
+     * 传送带上的包裹必须在 days 天内从一个港口运送到另一个港口。
+     *
+     * 传送带上的第 i 个包裹的重量为 weights[i]。每一天，我们都会按给出重量（weights）的顺序往传送带上装载包裹。我们装载的重量不会超过船的最大运载重量。
+     *
+     * 返回能在 days 天内将传送带上的所有包裹送达的船的最低运载能力。
+     *
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+     * 输出：15
+     * 解释：
+     * 船舶最低载重 15 就能够在 5 天内送达所有包裹，如下所示：
+     * 第 1 天：1, 2, 3, 4, 5
+     * 第 2 天：6, 7
+     * 第 3 天：8
+     * 第 4 天：9
+     * 第 5 天：10
+     *
+     * 请注意，货物必须按照给定的顺序装运，因此使用载重能力为 14 的船舶并将包装分成 (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) 是不允许的。
+     * 示例 2：
+     *
+     * 输入：weights = [3,2,2,4,1,4], days = 3
+     * 输出：6
+     * 解释：
+     * 船舶最低载重 6 就能够在 3 天内送达所有包裹，如下所示：
+     * 第 1 天：3, 2
+     * 第 2 天：2, 4
+     * 第 3 天：1, 4
+     * 示例 3：
+     *
+     * 输入：weights = [1,2,3,1,1], D = 4
+     * 输出：3
+     * 解释：
+     * 第 1 天：1
+     * 第 2 天：2
+     * 第 3 天：3
+     * 第 4 天：1, 1
+     *  
+     *
+     * 提示：
+     *
+     * 1 <= days <= weights.length <= 5 * 104
+     * 1 <= weights[i] <= 500
+     *
+     */
+    public static void shipWithinDays(){
+        int[] plies={3,2,2,4,1,4};
+        int h=3;
 
+        int left=1;
+        int right=10;
+        /**
+         * 显然，船的最小载重应该是weights数组中元素的最大值，因为每次至少得装一件货物走，不能说装不下嘛。
+         *
+         * 最大载重显然就是weights数组所有元素之和，也就是一次把所有货物都装走。
+         */
+        for (int ply : plies) {
+            right=right+ply;
+        }
+
+        while (left<right){
+            int mid=left+(right -left)/2;
+            if (shipWithinDaysFx(mid,plies)==h){
+                right=mid;
+            }else if(shipWithinDaysFx(mid,plies)<h){
+                right=mid;
+            }else {
+                left=mid+1;
+            }
+        }
+        System.out.println(left);
+    }
+
+    public static int shipWithinDaysFx(int x,int[] weights){
+        int y=0;
+        int hour=0;
+        for (int ply : weights) {
+//            float hours=(float) ply/(float) x;
+//            y=y+hours;
+            hour=hour+ply;
+            if (hour>x){
+                y=y+1;
+                hour=ply;
+            }
+        }
+        return y+1;
     }
 }

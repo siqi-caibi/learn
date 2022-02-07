@@ -1,4 +1,4 @@
-package sortAndSearching;
+package sort.searching;
 
 public class Dichotomy {
     public static void main(String[] args) {
