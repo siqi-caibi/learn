@@ -3,6 +3,7 @@ package cache;
 import java.util.LinkedHashMap;
 
 /**
+ * Least Recently Used，
  * 删除最晚使用的
  *  缓存容量为 2
  *LRUCache cache=new LRUCache(2);
