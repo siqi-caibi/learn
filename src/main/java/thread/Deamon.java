@@ -38,9 +38,19 @@ public class Deamon {
     }
 
     public static void main(String[] args) throws Exception {
-        Thread threadUsr=new Thread(new UserTestRunnable());
+        Thread threadUsr=new Thread(()->{
+            for (int i = 0; i < 1000000000; i++) {
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+                System.out.println(Thread.currentThread().getName()+"时间"+i);
+            }
+        });
         threadUsr.start();
-
+        threadUsr.setDaemon(false);
+        System.out.println("主线程结束");
 
     }
 }
