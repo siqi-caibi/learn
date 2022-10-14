@@ -25,18 +25,18 @@ public class ArraySort {
                     end--;
                 }
                 array[start] = array[end];
-                System.out.println(Arrays.toString(array));
+
 
                 while (start < end && cur > array[start]) {
                     start++;
                 }
 
                 array[end] = array[start];
-                System.out.println(Arrays.toString(array));
+
 
             }
             array[start] = cur;
-            System.out.println(Arrays.toString(array));
+
 
             quickSortFx(array, hight, start - 1);
             quickSortFx(array, start + 1, low);
