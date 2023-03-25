@@ -1,5 +1,10 @@
 package array;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 最常⽤的⼆分查找场景：寻找⼀个数、寻找左侧边界、寻找右侧边界。按照给定的顺序装运,单调递增或递减
  *
@@ -40,7 +45,9 @@ package array;
 public class BinarySearch {
     public static void main(String[] args) {
 //        banana();
-        shipWithinDays();
+//        shipWithinDays();
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        System.out.println(percent.format(new BigDecimal("0.54")));
     }
 
     /**
