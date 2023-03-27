@@ -1,5 +1,10 @@
 package array;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * 最常⽤的⼆分查找场景：寻找⼀个数、寻找左侧边界、寻找右侧边界。按照给定的顺序装运,单调递增或递减
  *
@@ -194,4 +199,5 @@ public class BinarySearch {
         }
         return y+1;
     }
+    CopyOnWriteArrayList
 }

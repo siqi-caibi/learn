@@ -1,13 +1,13 @@
 package treeSem;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class Base {
     public static void main(String[] args) {
-//        iterates();
+        iterates();
 //        invert();
 //        buildTree();
-        findDuplicateSubtrees();
+//        findDuplicateSubtrees();
     }
 
     /**
@@ -47,7 +47,8 @@ public class Base {
 //        beforeIterate(root);
 //            midIterate(root);
 //        rightIterate(root);
-        System.out.println(count(root));
+        levelOut(root);
+//        System.out.println(count(root));
     }
 
     /**
@@ -109,6 +110,42 @@ public class Base {
 
         System.out.println(node.value);
     }
+    /**
+     * 层序遍历
+     */
+    private static void levelOut(TreeNode node){
+        if (node==null){
+            return;
+        }
+        Queue<TreeNode> queue=new LinkedList<>();
+        queue.offer(node);
+        List<List<Integer>> valList=new ArrayList<>();
+
+        while (!queue.isEmpty()){
+//            注意是所有值的左右，不是一个节点的左右
+            List<Integer> val=new ArrayList<>();
+//            注意这里是  queue一直变化，要把size拿出去
+            int size= queue.size();;
+            for (int i = 0; i < size; i++) {
+                TreeNode nodeCur=queue.poll();
+                val.add(nodeCur.value);
+
+                if (nodeCur.left!=null){
+                    queue.offer(nodeCur.left);
+                }
+                if (nodeCur.right!=null){
+                    queue.offer(nodeCur.right);
+                }
+            }
+            valList.add(val);
+
+
+        }
+        for (List<Integer> integers : valList) {
+            System.out.println(integers);
+        }
+    }
+
 
     /**
      *             4
@@ -355,4 +392,8 @@ public class Base {
         }
         return rootString;
     }
+
+
+
+
 }

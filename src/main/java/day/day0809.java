@@ -3,6 +3,7 @@ package day;
 import link.ListNode;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class day0809 {
 
@@ -348,5 +349,31 @@ public class day0809 {
         }
 
         System.out.println(maxAns);
+    }
+
+    private static void search(){
+        int[] nums = {2,3,4,5,0,1};
+
+        int left=0;
+        int right=nums.length-1;
+        int target=1;
+        while (left!=right){
+            int mid =(left+right)/2;
+            int cur=nums[mid];
+          if (cur==target){
+              System.out.println(mid);
+              return;
+          }
+            //                先不要比较target，先判断在数组的哪一边
+            if (nums[0]<cur){
+                if (cur>target){
+                    right=mid-1;
+                }else {
+                    left=mid+1;
+                }
+            }
+
+
+        }
     }
 }
