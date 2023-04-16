@@ -1,7 +1,6 @@
 package array;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 /**
  * 快速 频繁 的 获取，数组内范围的值
@@ -135,6 +134,45 @@ public class RangeSum {
     public static void main(String[] args) {
 //        getArraySumRang();
 //        getArraySumRangTwoDimensionalArray();
-        maxChildArraySum();
+//        maxChildArraySum();
+//        sum();
     }
+
+    private static void sum(){
+//        例子1
+//        int[] arraySum={1,2,3,0,6};
+//        int target=6;
+//  例子 2
+        int[] arraySum={1,6,0,8};
+        int target=7;
+        Arrays.sort(arraySum);
+        int  curSum=0;
+        int[]  result={-1,-1,-1,-1,-1};
+        int resultIndex=0;
+        int minIndex=0;
+        for (int i = arraySum.length - 1; i >= 0; i--) {
+            if (arraySum[i]>target){
+                minIndex=i;
+                continue;
+            }
+            curSum=curSum+arraySum[i];
+            if (curSum<target) {
+                result[resultIndex] = arraySum[i];
+            }else if(curSum==target){
+                result[resultIndex] = arraySum[i];
+                break;
+            }
+            else {
+                result[resultIndex] = arraySum[0];
+                break;
+            }
+            resultIndex++;
+        }
+        if (result[0]==-1){
+            result[minIndex]=arraySum[minIndex];
+        }
+        System.out.println(curSum);
+        System.out.println(Arrays.toString(result));
+    }
+
 }

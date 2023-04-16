@@ -1,5 +1,7 @@
 package thread;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class VolatileUse {
 
     private volatile int num=0;
@@ -21,7 +23,7 @@ public class VolatileUse {
             e.printStackTrace();
             System.out.println("sdfsd ");
         }
-
+        ReentrantLock
 
     }
     public void ss(){

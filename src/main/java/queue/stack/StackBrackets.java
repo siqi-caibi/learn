@@ -17,7 +17,7 @@ public class StackBrackets {
      */
     private static boolean isValid(String str) {
         Stack<Character> left=new Stack<>();
-
+//堆里只放左括号
         for (Character c : str.toCharArray()) {
             if (c == '(' || c == '{' || c == '[')
                 left.push(c);
