@@ -15,21 +15,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.client.WebSocketClient;
+import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.OutputStream;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController
 public class PoschangerController {
+
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
+    @Autowired
+    private WebSocketClient webSocketClient;
     //private String url = "http://ecsb-crb-test.crcloud.com:8070/ecsb/gw/sys/rs/";
     private String url = "https://ecsb-crb.crcloud.com/ecsb/gw/sys/rs/";
     @Autowired
@@ -38,6 +45,8 @@ public class PoschangerController {
     public static void main(String[] args) throws Exception {
         PoschangerController poschangerController=new PoschangerController();
         poschangerController.setUrl();
+        StandardWebSocketClient client=new StandardWebSocketClient();
+      
     }
     @GetMapping("test1")
     public void setUrl() throws Exception{
