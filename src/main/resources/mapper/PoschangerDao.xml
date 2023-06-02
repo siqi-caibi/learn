@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.PoschangerDao">
+
+    <select id="getPoschangerList" resultType="Integer">
+        select  upmatid from poschanger where matid =#{matId}
+<!--        in (-->
+<!--        <foreach collection="matList" separator="," item="matid">-->
+<!--            #{matid}-->
+<!--        </foreach>-->
+<!--        )-->
+    </select>
+
+    <select id="getAllList" resultType="spring.PoschangerPojo">
+        select  * from poschanger
+    </select>
+</mapper>

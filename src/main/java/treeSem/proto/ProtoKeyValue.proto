@@ -1,0 +1,19 @@
+option java_package = "com.hypers.gmi.db.proto";
+option java_outer_classname = "ProtoKeyValue";
+option java_generate_equals_and_hash = true;
+option optimize_for = SPEED;
+
+message KeyValue{
+	required uint32 key = 1;
+	optional uint32 valueId = 2 [default = 0];
+	optional string value = 3;
+}
+
+message KeyValueList {
+	repeated KeyValue list = 1;
+}
+
+message OList {
+        repeated KeyValueList attu = 1;
+        repeated KeyValueList tag = 2;
+}

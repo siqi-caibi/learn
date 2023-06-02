@@ -1,9 +1,9 @@
 package array;
 
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 最常⽤的⼆分查找场景：寻找⼀个数、寻找左侧边界、寻找右侧边界。按照给定的顺序装运,单调递增或递减
@@ -46,27 +46,10 @@ public class BinarySearch {
     public static void main(String[] args) {
 //        banana();
 //        shipWithinDays();
-        int nums[] =new int[] {1,3,5,6}; int target = 5;
-        searchInsert(nums,target);
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        System.out.println(percent.format(new BigDecimal("0.54")));
     }
 
-
-    public static int searchInsert(int[] nums, int target) {
-        int left=0;int right=nums.length-1;
-
-        while(left<=right){
-            int mid= (left+right)/2;
-
-             if(nums[mid]<target){
-                left=mid+1;
-            }else{
-                right=mid-1;
-            }
-        }
-
-        System.out.println(left);
-        return left;
-    }
     /**
      * 珂珂喜欢吃香蕉。这里有 N 堆香蕉，第 i 堆中有 piles[i] 根香蕉。警卫已经离开了，将在 H 小时后回来。
      * 珂可以决定她吃香蕉的速度 K （单位：根/小时）。每个小时，她将会选择一堆香蕉，从中吃掉 K 根。如果这堆香蕉少于 K 根，她将吃掉这堆的所有香蕉，然后这一小时内不会再吃更多的香蕉。
@@ -218,5 +201,4 @@ public class BinarySearch {
         }
         return y+1;
     }
-
 }

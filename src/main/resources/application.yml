@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sq?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+
+mybatis-plus:
+  # 扫描 mapper.xml
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    banner: false
+
+# 日志类型
+logging:
+  level:
+    com.gmi.cdp: debug
+
+
+
+
+
