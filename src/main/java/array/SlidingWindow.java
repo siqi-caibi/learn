@@ -233,6 +233,31 @@ public class SlidingWindow {
         }
     }
 
+    private static void permutationInString2() {
+        String s = "eidboaboo";
+        String t = "ab";
+        HashMap<Character,Integer> need=new HashMap<>();
+        HashMap<Character,Integer> window=new HashMap<>();
+        for (char c : t.toCharArray()) {
+            need.put(c,1);
+        }
+        char[] chars=s.toCharArray();
+        int left=0;
+        int right=0;
+        while (right<= chars.length-1){
+            char rChar=chars[right];
+            if (need.containsKey(rChar)){
+                window.put(rChar,window.getOrDefault(rChar,1));
+            }
+            right++;
+
+            while (right-left>=t.length()){
+
+            }
+        }
+
+    }
+
     /**
      *找所有字⺟异位词
      *

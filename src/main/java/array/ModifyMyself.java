@@ -7,7 +7,8 @@ public class ModifyMyself {
 
     public static void main(String[] args) {
 //        removeDuplicates();
-        removeElement();
+//        removeElement();
+        removeElemen2t();
     }
 
     /**
@@ -85,6 +86,25 @@ public class ModifyMyself {
         System.out.println(slow);
     }
 
+
+    private static void removeElemen2t() {
+        int[] nums={3,2,2,3};
+        int val=3;
+
+        int fast=0; int slow=0;
+        while (fast<= nums.length-1){
+            if (nums[fast]!=val){
+                nums[slow]=nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        for (int num : nums) {
+            System.out.print(num);
+        }
+
+//        System.out.println(slow);
+    }
 /*
   有序 链表去重，同第一个
 ListNode deleteDuplicates(ListNode head) {

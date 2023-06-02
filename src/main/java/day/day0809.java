@@ -18,11 +18,12 @@ public class day0809 {
 //        cache.put(4,4);
 //        System.out.println(cache.get(1));
 //        day04();
-//        quickSort();
+        quickSort();
 //        sumThird();
 //        mergeLink();
 //        sumSecond();
-        maxList();
+//        maxList();
+//        reverseList();
     }
 
     /*
